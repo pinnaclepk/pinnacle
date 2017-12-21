@@ -1,0 +1,39 @@
+<?php
+
+// Remove Default Zend Form Decorators.
+// $this->removeDecorators($this->loginForm);
+$errmsg = '';
+$translate = Zend_Registry::get("translate");
+if(count($this->errmsg))
+{
+    $errmsg = implode("<br>", $this->errmsg);
+}
+?>
+<div class="module_name_container">
+    <div class="module_name">
+      <?php echo SITE_LOGIN_NAME ;?> </div>
+</div>
+<form id="frmLogin" action="/login/login/login" method="post" name="frmLogin" >
+            <div id="error_msg1" class="new_login_error"><?php echo $errmsg;?></div>
+        <div style="display:none;" id="loginmsgZone" class="new_login_error"></div>
+            <div class="new_login_input new_username">
+                <?php echo $this->loginForm->getElement("UserName");?>
+            </div>
+        <div class="new_login_input new_password">
+            <?php echo $this->loginForm->getElement("Password");?>
+        </div>
+        <div class="new_login_button">
+            <?php echo $this->loginForm->getelement("Login");?>
+        </div>
+
+</form>
+<script>
+<?php
+    if($errmsg != "")
+    {
+?>
+    jQuery("#error_msg1").attr("style", "display: block");
+<?php
+    }
+?>
+</script>

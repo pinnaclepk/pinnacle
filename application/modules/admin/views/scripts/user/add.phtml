@@ -1,0 +1,149 @@
+<?php
+$translate = Zend_Registry::get("translate");
+echo $this->partial("blocks/headercontent.phtml", array("form" => $this->userForm, 'id' => $this->UserID, 'errmsg' => $this->errmsg));
+?>
+<div class="box-header with-border">
+    <h3 class="box-title"><?php echo $translate->_("user_registration"); ?>
+    </h3>
+</div>
+<div class="box-body">
+    <div class="form-group">
+        <label class="col-sm-3 control-label"><?php echo $this->userForm->getElement("UserTypeID")->getLabel(); ?><span class="mendatory">*</span></label>
+        <div class="col-sm-10"><?php echo $this->userForm->getElement("UserTypeID"); ?></div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label"><?php echo $this->userForm->getElement("SponsorID")->getLabel(); ?><span class="mendatory">*</span></label>
+        <div class="col-sm-10"><?php echo $this->userForm->getElement("SponsorID"); ?></div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label"><?php echo $this->userForm->getElement("Username")->getLabel(); ?><span class="mendatory">*</span></label>
+        <div class="col-sm-10">
+            <?php
+            if (!empty($this->UserID)) {
+                echo $this->UserData["Username"];
+                echo '<span style="display:none">' . $this->userForm->getElement("Username") . '</span>';
+            } else {
+                ?>  
+                <?php echo $this->userForm->getElement("Username"); ?>
+                <?php
+            }
+            ?>
+        </div>
+    </div>
+    <?php
+    if (empty($this->UserID)) {
+        ?>
+        <div class="form-group">
+            <label class="col-sm-3 control-label"><?php echo $this->userForm->getElement("Password")->getLabel(); ?><span class="mendatory">*</span></label>
+            <div class="col-sm-10"><?php echo $this->userForm->getElement("Password"); ?></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label"><?php echo $this->userForm->getElement("ConfirmPassword")->getLabel(); ?><span class="mendatory">*</span></label>
+            <div class="col-sm-10"><?php echo $this->userForm->getElement("ConfirmPassword"); ?></div>
+        </div>
+    <?php } ?>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">            
+            <?php
+            echo $this->userForm->getElement("UserID");
+            echo $this->userForm->getElement("FName")->getLabel();
+            ?><span class="mendatory">*</span></label>
+        <div class="col-sm-10"><?php echo $this->userForm->getElement("FName"); ?></div>
+    </div>                                               
+    <div class="form-group">
+        <label class="col-sm-3 control-label"><?php echo $this->userForm->getElement("LName")->getLabel(); ?><span class="mendatory">*</span></label>
+        <div class="col-sm-10"><?php echo $this->userForm->getElement("LName"); ?></div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label"><?php echo $this->userForm->getElement("JoiningDate")->getLabel(); ?><span class="mendatory">*</span></label>
+        <div class="col-sm-10"><?php echo $this->userForm->getElement("JoiningDate"); ?></div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label"><?php echo $this->userForm->getElement("Email")->getLabel(); ?><span class="mendatory">*</span></label>
+        <div class="col-sm-10"><?php echo $this->userForm->getElement("Email"); ?></div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label"><?php echo $this->userForm->getElement("Phone")->getLabel(); ?><span class="mendatory">*</span></label>
+        <div class="col-sm-10"><?php echo $this->userForm->getElement("Phone"); ?></div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label"><?php echo $this->userForm->getElement("MobileNo")->getLabel(); ?><span class="mendatory">*</span></label>
+        <div class="col-sm-10"><?php echo $this->userForm->getElement("MobileNo"); ?></div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label"><?php echo $this->userForm->getElement("DOB")->getLabel(); ?><span class="mendatory">*</span></label>
+        <div class="col-sm-10"><?php echo $this->userForm->getElement("DOB"); ?></div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label"><?php echo $this->userForm->getElement("Address")->getLabel(); ?><span class="mendatory">*</span></label>
+        <div class="col-sm-10"><?php echo $this->userForm->getElement("Address"); ?></div>
+    </div>
+    
+    <div class="form-group">
+        <label class="col-sm-3 control-label"><?php echo $this->userForm->getElement("ZipCode")->getLabel(); ?><span class="mendatory">*</span></label>
+        <div class="col-sm-10"><?php echo $this->userForm->getElement("ZipCode"); ?></div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label"><?php echo $this->userForm->getElement("StateID")->getLabel(); ?></label>
+        <div class="col-sm-10"><?php echo $this->userForm->getElement("StateID"); ?></div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label"><?php echo $translate->_("profile_photo"); ?></label>
+        <div class="col-sm-10">
+            <input type="file" name="Photo" id="Photo">  
+            <?php
+            if (isset($this->UserData["Photo"]) && !empty($this->UserData["Photo"])) {
+                ?>
+                <img src="<?php echo PUBLIC_PATH . "/profile/" . $this->UserData["Photo"]; ?>" width="50px" height="50px">
+                <?php
+            }
+            ?>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="col-sm-3 control-label"><?php echo $this->userForm->getElement("IsActive")->getLabel(); ?></label>
+        <div class="col-sm-10"><?php echo $this->userForm->getElement("IsActive"); ?></div>
+    </div>
+</div>
+
+</div>
+</div>
+</div>
+
+<?php
+echo $this->partial("blocks/footercontent.phtml");
+?>
+<script>
+    $(document).ready(function () {
+        $('#LicenceExpiryDate').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-2:+20",
+            dateFormat: 'dd/mm/yy',
+            showButtonPanel: false
+
+        });
+        $('#DOB').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            maxDate: '+0',
+            yearRange: "-70:+0",
+            dateFormat: 'dd/mm/yy',
+            showButtonPanel: false
+
+        });
+        $('#JoiningDate').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-20:+1",
+            dateFormat: 'dd/mm/yy',
+            showButtonPanel: false
+
+        });
+    });
+</script>

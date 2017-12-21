@@ -1,0 +1,43 @@
+<?php
+$translate = Zend_Registry::get("translate");
+?>
+<div id="searchCountryDiv" class="right_dropdown top_indicator tooltip " style="display:none;">
+    <div class="padding_5 border_radius box box-primary tooltip_content">
+        <form id="frm" action="<?php echo INNER_PATH . "/admin/plan/index"; ?>" method="post" name="frm">
+            <input id="page_start_record" type="hidden" value="0" name="page_start_record">
+            <div class="box-body">   
+                <div class="form-group">
+                    <label>
+                        <?php echo $translate->_("coin_name"); ?>
+                    </label>
+                    <div>
+                        <?php echo (isset($this->searchData['CoinID']) && !empty($this->searchData['CoinID'])) ? $this->Getoptions()->coin($this->searchData['CoinID']) : $this->Getoptions()->coin(); ?>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><?php echo $translate->_("reason_name"); ?></label>
+                    <div>
+                        <input type="text" maxlength="200" name="PlanName" id="PlanName" value="<?php echo isset($this->searchData['PlanName']) ? $this->searchData['PlanName'] : ''; ?>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><?php echo $translate->_("status"); ?></label>
+                    <div>
+                        <select id="IsActive" name="IsActive" class="form-control">
+                            <option value=""><?php echo $translate->_("select"); ?></option>
+                            <option value="1" <?php echo (isset($this->searchData['IsActive']) && ($this->searchData['IsActive'] == '1')) ? "selected='selected'" : ""; ?>><?php echo $translate->_("active"); ?></option>
+                            <option value="0" <?php echo (isset($this->searchData['IsActive']) && ($this->searchData['IsActive'] == '0')) ? "selected='selected'" : ""; ?>><?php echo $translate->_("inactive"); ?></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <input id="btnSearch" class="btn btn-block button_search font_helvatica" type="submit" name="btnSearch" value="<?php echo $translate->_("ok"); ?>">
+                        <input id="btnStateclear" class="btn btn-block button_reset font_helvatica" type="button" name="btnStateclear" value="<?php echo $translate->_("clear"); ?>" onclick="getData('/admin/plan/index')">
+
+                    </div>
+                </div>  
+            </div>
+        </form>
+    </div>
+</div>

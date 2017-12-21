@@ -1,0 +1,48 @@
+<?php
+$translate = Zend_Registry::get("translate");
+?>
+<div id="searchCountryDiv" class="right_dropdown top_indicator tooltip " style="display:none;">
+    <div class="padding_5 border_radius box box-primary tooltip_content">
+        <form action="<?php echo INNER_PATH . "/admin/user/index"; ?>" method="post" name="frm" id="frm" >
+            <input type="hidden" value="0" name="page_start_record" id="page_start_record">
+            <div class="box-body">
+                <div class="form-group">
+                    <label>
+                        <?php echo $translate->_("role"); ?>
+                    </label>
+                    <div>
+                        <?php echo (isset($this->searchData['UserTypeID']) && !empty($this->searchData['UserTypeID'])) ? $this->Getoptions()->usertype($this->searchData['UserTypeID']) : $this->Getoptions()->usertype(); ?>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><?php echo $translate->_("username"); ?></label>
+                    <div>
+                        <input type="text" maxlength="15" name="UserName" id="txtSearchUserName" value="<?php echo isset($this->searchData['UserName']) ? $this->searchData['UserName'] : ''; ?>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><?php echo $translate->_("email"); ?></label>
+                    <div>
+                        <input type="text" maxlength="80" name="Email" id="txtSearchEmail" value="<?php echo isset($this->searchData['Email']) ? $this->searchData['Email'] : ''; ?>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><?php echo $translate->_("status"); ?></label>
+                    <div>
+                        <select id="IsActive" name="IsActive" class="form-control">
+                            <option value=""><?php echo $translate->_("select"); ?></option>
+                            <option value="1" <?php echo (isset($this->searchData['IsActive']) && ($this->searchData['IsActive'] == '1')) ? "selected='selected'" : ""; ?>><?php echo $translate->_("active"); ?></option>
+                            <option value="0" <?php echo (isset($this->searchData['IsActive']) && ($this->searchData['IsActive'] == '0')) ? "selected='selected'" : ""; ?>><?php echo $translate->_("inactive"); ?></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <input id="btnSearch" class="btn btn-block button_search font_helvatica" type="submit" name="btnSearch" value="<?php echo $translate->_("ok"); ?>">
+                        <input id="btnUserClear" class="btn btn-block button_reset font_helvatica" type="button" name="btnUserClear" value="<?php echo $translate->_("clear"); ?>" onclick="getData('/admin/user/index')">
+                    </div>
+                </div>  
+            </div>
+        </form>
+    </div>
+</div>

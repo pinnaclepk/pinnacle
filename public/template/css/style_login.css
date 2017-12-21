@@ -1,0 +1,90 @@
+@charset "UTF-8";
+/* CSS Document */
+/* jquery.ui.core.css */
+/* RESET */
+
+.login-box-msg, .register-box-msg{
+    font-size: 18px;
+}
+.login-box-body, .register-box-body{
+    padding: 25px;
+}
+
+.form-control {
+    height: 44px !important;
+}
+
+.form-control-feedback {
+    line-height: 44px;
+}
+
+input.btn-block[type="submit"], input.btn-block[type="reset"], input.btn-block[type="button"]
+{
+    height: 44px !important;
+}
+
+/*.login-box, .register-box {
+    width: 416px;
+    margin: 5% auto;
+}*/
+
+.login-logo{
+    margin-bottom: 20px;
+	position:relative;
+}
+
+.login-logo img {
+    height: 80%;
+    width: 80%;
+}
+
+.new_login_error
+{
+    background-color:#FFC6C7;
+    border:1px solid #900;
+    padding:5px 5px 5px 5px;
+    color:#FFF;
+    border-radius:5px;
+    line-height:24px;
+    font-size:13px;
+    text-align:center;
+    margin-bottom:10px;
+    display:block;
+    background-image:url(../images/error_bg.png);
+    background-repeat:repeat;
+    background-position:center center;
+}
+
+.error_msg
+{
+    color: #F00;
+    text-align: center;
+    padding: 0px;
+    border-color: #B20000 !important;
+    font-weight: normal;
+}
+@media screen and (max-width:640px)
+
+{
+.login-box
+{width:90%; margin:0px auto; position:relative; }
+.login-logo
+{ width:90%; margin:10px auto; padding-bottom:30px; position:relative;}
+.login-logo img {
+    height: 50%;
+    width: 50%;
+}
+
+@media (min-width: 768px) {
+
+.login-box
+{width:90%; margin:0px auto; position:relative; }
+.login-logo
+{ width:90%; margin:10px auto; padding-bottom:30px; position:relative;}
+.login-logo img {
+    height: 50%;
+    width: 50%;
+}
+
+
+}

@@ -1,0 +1,143 @@
+<?php
+
+function getMenuRoleTopMenu() {
+    $session = Zend_Registry::get("session");
+    $RoleId = $session->RoleID;
+    $roleObj = new Role_Model_Role();
+    $roleAccess = $roleObj->getRoleAccessByID($RoleId);
+
+    return $roleAccess;
+}
+
+function getMenuList() {
+    //$menuAccess = getMenuRoleTopMenu();
+
+    $module = new Application_Model_Module();
+    $menuArr = $module->getMenuArray();
+
+    $arr_main_menu = array();
+    if (is_array($menuArr) && !empty($menuArr)) {
+        foreach ($menuArr as $accessType => $menuInfo) {
+            //if (array_key_exists($accessType, $menuAccess)) {
+                $arr_main_menu = getArr($arr_main_menu, $menuInfo);
+            //}
+        }
+    }
+    $main_menu = array();
+    $main_menu = array_keys($arr_main_menu);
+
+    echo "<ul id='Menu1' class='sidebar-menu'>";
+    echo "<li><a onclick=\"ActiveTab('#dashboard','dashboard','admin/dashboard/index');\" href='#'><i class='fa fa-dashboard'></i><span>Dashboard</span></a></a></li>";
+    //echo "<li><a onclick=\"ActiveTab('#timesheet','timesheet','timesheet/timesheet/index');\" href='#timesheet'>Time Sheet</a></a></li>";
+    //echo "<li><a onclick=\"ActiveTab('#incident','incident','incident/incident/index');\" href='#incident'>Incident</a></a></li>";
+    echo nested_menu($arr_main_menu, $main_menu, 0);
+    //echo "<li><a onclick=\"ActiveMenuTab('#','competencies','#');\" href='#'>Competencies</a></a></li>";
+    echo "</ul>";
+}
+
+function getArr($array, $menuInfo) {
+    if (is_array($menuInfo) && !empty($menuInfo)) {
+        foreach ($menuInfo as $key => $value) {
+            if (is_array($value) > 0) {
+                if (!isset($array[$key])) {
+                    $array[$key] = array();
+                }
+                $array[$key] = getArr($array[$key], $value);
+            } else {
+                $array = mergeValue($array, $key, $value);
+            }
+        }
+    }
+    return $array;
+}
+
+function mergeValue($array, $key, $value) {
+    if (!isset($array[$key])) {
+        $array[$key] = $value;
+    } else {
+        if (is_array($value)) {
+            $array[$key] += $value;
+        } else {
+            $array[$key][] = $value;
+        }
+    }
+    return $array;
+}
+
+$main = array();
+
+function nested_menu($array, $main_menu, $i = 0) {
+    global $main;
+    $k = 0;
+    if (is_array($array) && !empty($array)) {
+        foreach ($array as $key => $val) {
+            if (is_array($val)) {
+                $main = in_array($key, $main_menu) ? $key : $main;
+                if ($main == $key) {
+                    $class = '';
+                    $class = "<span class=\"pull-right-container\">
+              <i class=\"fa fa-angle-left pull-right\"></i>
+            </span>";
+                    echo "<li class='treeview' id='" . str_replace(' ', '', strtolower($key)) . "' >";
+                } else {
+                    echo "<li class='treeview' id='" . str_replace(' ', '', strtolower($key)) . "' >";
+                }
+                switch(strtolower($key))
+                {
+                    case "members":
+                        $icon = '<i class="fa fa-user-plus"></i>';
+                        break;                    
+                    case "settings":
+                        $icon = '<i class="fa fa-gear"></i>';
+                        break;
+                }
+                echo "	<a href='javascript:void(0);'>" . $icon;
+                echo " <span>" . $key . "</span>";
+                if ($main == $key) {
+                    echo "	<span class=\"pull-right-container\">
+              <i class=\"fa fa-angle-left pull-right\"></i>
+            </span>";
+                }
+                echo "	</a>";
+                echo "	<ul class='treeview-menu'>";
+                $k++;
+                nested_menu($val, $main_menu, $k);
+            }
+
+            if (!is_array($val)) {
+                $circle = '';
+                if ($i > 0) 
+                {
+                    $circle = "<i class='fa fa-circle-o'></i>";
+                }
+                $controller = substr($val, 0, strpos($val, '/'));
+                echo "	<li><a href='#" . $controller . "' onclick=\" ActiveTab('#" . str_replace(' ', '', strtolower($main)) . "','" . $controller . "','/admin/" . $val . "');\">" . $circle . $key . "</a></li>";
+                //$i++;
+            }
+            if (is_array($val)) {
+                echo "	</ul>";
+                echo "</li>";
+            }
+        }
+    }
+}
+
+getMenuList();
+?>
+<script type="text/javascript">
+    function ActiveTab(activeid, controller, requestUrl) {
+        window.location.hash = controller;
+        
+        $.ajax({
+            url: requestUrl,
+            success: function (result)
+            {
+                $("#loadpage").html(result);
+            },
+            error: function (message)
+            {
+                $("#loadpage").html(message);
+            }
+        });
+    }
+</script>

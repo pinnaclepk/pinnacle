@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" style="height:100%" >
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="robots" content="index, follow" /> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title><?php echo SITE_TITLE  ?></title>        
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="stylesheet" type="text/css" href="<?php echo TEMPLATE_PATH ?>css/bootstrap.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="<?php echo TEMPLATE_PATH ?>css/font-awesome.min.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="<?php echo TEMPLATE_PATH ?>css/ionicons.min.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="<?php echo TEMPLATE_PATH ?>css/AdminLTE.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="<?php echo TEMPLATE_PATH ?>css/skins/_all-skins.min.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="<?php echo TEMPLATE_PATH ?>css/blue.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="<?php echo TEMPLATE_PATH ?>css/blue.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="<?php  echo TEMPLATE_PATH; ?>css/style_login.css"  media="all"/>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body class="hold-transition login-page">
+        <script language="javascript" type="text/javascript" src="<?php echo PUBLIC_PATH ?>/js/jquery/jquery-1.9.1.min.js"></script>
+        <script language="javascript" type="text/javascript" src="<?php echo PUBLIC_PATH ?>/js/jquery/jquery-ui-1.9.0.custom.min.js"></script>
+        <script language="javascript" type="text/javascript" src="<?php echo PUBLIC_PATH ?>/js/bootstrap.js"></script>
+        <script language="javascript" type="text/javascript" src="<?php echo PUBLIC_PATH ?>/js/icheck.js"></script>
+        
+        <div class="login-box">
+            <div id="header" class="login-logo" >
+                <img src=<?php  echo "/images/logo.png"; ?> />
+            </div>
+                                     
+                <?php echo $this->layout()->content; ?>                                
+            
+    </body>
+</html>

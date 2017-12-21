@@ -1,0 +1,48 @@
+<?php
+$errmsg = '';
+$translate = Zend_Registry::get("translate");
+if (count($this->errmsg)) {
+    $errmsg = implode("<br>", $this->errmsg);
+}
+?>
+<div class="login-box-body">
+    <p class="login-box-msg">Login</p>
+    <div class="login_box">
+        <form id="frmLogin" action="<?php echo "/admin/login/login"; ?>" method="post" name="frmLogin" >
+            <?php 
+            if(!empty($errmsg)) {
+            ?>
+            <div id="error_msg1" class="new_login_error"><?php echo $errmsg; ?></div>
+            <?php
+            }
+            ?>
+            <div class="form-group has-feedback">
+                <?php echo $this->loginForm->getElement("UserName"); ?>
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <?php echo $this->loginForm->getElement("Password"); ?>
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                
+                <a href="<?php echo INNER_PATH . "/admin/login/forgot"; ?>">Forgot Password</a>
+            </div>
+            <div class="row">                
+                <div class="col-xs-12">
+                    <?php echo $this->loginForm->getelement("Login"); ?>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<script>
+<?php
+if ($errmsg != "") {
+    ?>
+        jQuery("#error_msg1").attr("style", "display: block");
+    <?php
+}
+?>
+</script>

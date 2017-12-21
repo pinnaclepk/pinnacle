@@ -1,0 +1,67 @@
+<?php
+$errmsg = '';
+
+if (isset($this->errmsg) && !empty($this->errmsg)) {
+    if (is_array($this->errmsg))
+        $errmsg = implode("<br>", $this->errmsg);
+    else
+        $errmsg = $this->errmsg;
+}
+
+$moduleName = Zend_Controller_Front::getInstance()->getRequest()->getModuleName();
+$controllerName = Zend_Controller_Front::getInstance()->getRequest()->getControllerName();
+$actionName = Zend_Controller_Front::getInstance()->getRequest()->getActionName();
+
+if (isset($this->nosearch)) {
+    $var = 1;
+} else {
+    $var = 0;
+}
+?>
+<form id="frm" class="form-horizontal" name="frm" action="<?php echo '/'.$moduleName . '/' . $controllerName . '/' . $actionName ?>" method="post" enctype="multipart/form-data"> 
+<div class="row">
+    <div class="col-xs-12">
+        <div class="dataTables_length">
+            <?php
+            if (!isset($this->opBarRequired) && $this->opBarRequired == false) {
+
+                echo $this->partial("blocks/operationbar.phtml", array("form" => $this->form, 'id'=>$this->id, "qstr" => "id/" . $this->id, "nosearch" => $var, "isEdit" => $this->isEdit));
+            } else
+                echo $this->render("blocks/header.phtml");
+            ?>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <?php 
+    if($this->twocolumn) { ?>
+        <div class="col-md-6">
+    <?php } else { ?>
+    <div class="col-xs-12">
+    <?php } ?>
+        <div class="dataTables_length">
+                <div id="functiondialogs">
+                    <?php
+                    if (!empty($errmsg)) {
+                        ?>                                    
+                        <div id="dialogcontent" title="<?php echo $this->pageTitle; ?>"> <?php echo $errmsg; ?> </div>
+                        <script>
+                            $(document).ready(function () {
+                                $(function () {
+                                    $("#dialogcontent").dialog({
+                                        modal: true,
+                                        buttons: {
+                                            Ok: function () {
+                                                $(this).dialog("close");
+                                            }
+                                        }
+                                    });
+                                });
+                            });
+                        </script>
+                        <?php
+                    }
+                    ?>
+                </div>
+                <div class="box box-info">
+

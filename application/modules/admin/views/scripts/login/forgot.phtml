@@ -1,0 +1,40 @@
+<?php
+$errmsg = '';
+$translate = Zend_Registry::get("translate");
+if (count($this->errmsg)) {
+    $errmsg = implode("<br>", $this->errmsg);
+}
+?>
+<div class="login-box-body">
+    <p class="login-box-msg"><?php echo "Forgot Password"; ?> </p>
+    <div class="login_box">
+        <?php
+        if(!empty($this->msg)) {
+            ?>
+        
+        <div class="module_name_container">
+            <div class="module_name">
+                <span class="error_msg"><?php echo $translate->_($this->msg); ?></span>
+            </div>
+
+        </div>
+        <?php
+        }
+        if($this->msg != "check_mail_send") {
+        ?>
+        <form id="frmLogin" action="<?php echo INNER_PATH . "/admin/login/forgot"; ?>" method="post" name="frmLogin" >
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control" name="username" id="username" placeholder="Username" >
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            </div>
+            <div class="row">                
+                <div class="col-xs-12">
+                    <input type="submit" class="btn btn-primary btn-block btn-flat" name="btnSubmit" id="btnSubmit" value ="Submit" >
+                </div>
+            </div>
+        </form>
+        <?php 
+        }
+        ?>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<?php
+$moduleName = Zend_Controller_Front::getInstance()->getRequest()->getModuleName();
+$controllerName = Zend_Controller_Front::getInstance()->getRequest()->getControllerName();
+$actionName = Zend_Controller_Front::getInstance()->getRequest()->getActionName();
+$translate = Zend_Registry::get("translate");
+//echo $this->headScript();
+?>
+
+<script>
+    var controllerName = "<?php echo $controllerName; ?>";
+    var actionName = "<?php echo $actionName; ?>";
+    var moduleName = "<?php echo $moduleName; ?>";
+    //var postData = "<?php //echo http_build_query($_POST); ?>";
+    var lbl_select = "<?php echo $translate->_('select'); ?>";
+    var msg_delete_confirm = "<?php echo $translate->_('msg_delete_confirm'); ?>";
+    var postData = '';
+    var indexUrl = "";
+<?php
+if ($actionName == "index") {
+    ?>
+        var indexUrl = "<?php echo $moduleName . '/' . $controllerName . '/' . $actionName; ?>";
+    <?php
+}
+?>
+
+    $(".breadcrumb").html('<?php echo $this->breadcrumb(); ?>');
+</script>
+<?php
+
+//include_once(ROOT_PATH. "/public/js/common.js.php");
+?>
+<script src="<?php echo '/js/common.js'?>" type="text/javascript" ></script>

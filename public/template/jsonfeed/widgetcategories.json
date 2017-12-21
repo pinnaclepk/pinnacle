@@ -1,0 +1,20 @@
+{
+"categories" :
+  {
+  "category": [
+    {
+      "id":1,
+      "title" : "Chart",
+      "amount" : 6,
+      "url" : "dashboard/dashboard/widgetcategories/type/2/"
+    },
+    {
+      "id":2,
+      "title" : "Grid",
+      "amount": 6,
+      "url" : "dashboard/dashboard/widgetcategories/type/1/"
+    }
+    
+  ]
+  }
+}

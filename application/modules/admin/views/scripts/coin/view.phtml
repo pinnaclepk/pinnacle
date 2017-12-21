@@ -1,0 +1,40 @@
+<?php
+$errmsg = '';
+
+$translate = Zend_Registry::get("translate");
+
+echo $this->partial("blocks/headercontent.phtml", array("id" => $this->CoinID));
+?>
+
+<div class="box-header with-border">
+    <h3 class="box-title"><?php echo $translate->_("view_coin"); ?>
+    </h3>
+</div>
+<div class="box-body">    
+    <div class="form-group">
+        <label class="col-sm-2 control-label"><?php echo $translate->_("coin_name"); ?></label>
+        <div class="col-sm-10"> <?php echo $this->escape($this->CoinData['CoinName']); ?></div>
+    </div> 
+    <div class="form-group">
+        <label class="col-sm-2 control-label"><?php echo $translate->_("description"); ?></label>
+        <div class="col-sm-10"> <?php echo $this->escape($this->CoinData['Description']); ?></div>
+    </div>     
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            <?php echo $translate->_("status"); ?>
+        </label>
+
+        <div class="col-sm-10">
+            <?php
+            if ($this->CoinData["IsActive"] == '1') {
+                echo $translate->_("active");
+            } else {
+                echo $translate->_("inactive");
+            }
+            ?>
+        </div>
+    </div>
+</div>
+<?php
+echo $this->partial("blocks/footercontent.phtml");
+?>

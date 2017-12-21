@@ -1,0 +1,73 @@
+<?php
+$moduleName = Zend_Controller_Front::getInstance()->getRequest()->getModuleName();
+$controllerName = Zend_Controller_Front::getInstance()->getRequest()->getControllerName();
+$actionName = Zend_Controller_Front::getInstance()->getRequest()->getActionName();
+
+$moduleObj = new Application_Model_Module();
+//$opt = $moduleObj->getActionAccessInfo($controllerName);
+$opt = array("Add", "Edit", "View","Delete");
+
+$translate = Zend_Registry::get("translate");
+echo $this->render("blocks/header.phtml");
+
+
+?>
+<span  style="display:none" class="url"><?php echo '/' . $moduleName . '/' . $controllerName . '/' . "log" . '/'; ?></span>
+<div class="fc-left">
+    <?php
+    if ($actionName == 'index') {
+        $addUrl = "/" . $moduleName . "/" . $controllerName . "/add";
+        
+        if (in_array("Add", $opt)) {
+            ?>      <input type="button" onclick="getData('<?php echo $addUrl; ?>')" value="<?php echo $translate->_("add") ?>" class="btn btn-block btn-primary button_add font_helvatica" name="btnAdd" id="btnAdd">
+            <?php
+        }
+    } else if ($actionName == 'view') {
+        if (isset($this->qstr)) {
+            $editUrl = '/' . $moduleName . '/' . $controllerName . '/edit/' . $this->qstr;
+            $deleteUrl = '/' . $moduleName . '/' . $controllerName . '/delete/' . $this->qstr;
+        }
+        $session = Zend_Registry::get("session");
+        $edit = true;
+        if (in_array("Edit", $opt) && $edit) {
+            ?>
+            <input id="btnViewEdit" class="btn btn-block btn-primary button_edit font_helvatica" type="button" style="" onclick="getData('<?php echo $editUrl; ?>')" value="<?php echo $translate->_("edit") ?>" name="btnViewEdit">
+
+            <?php
+        }
+        $isDelete = true;
+        if(!in_array($this->id, array(1,2,3)) && $moduleName == "role")
+                $isDelete = false;
+        //echo $session->RoleID;
+
+        if (in_array("Delete", $opt) && $isDelete) {
+            ?>
+            <input id="btnViewDelete" class="btn btn-block btn-primary button_delete font_helvatica" type="button"  onclick="deleteData('<?php echo $deleteUrl; ?>')" value="<?php echo $translate->_("delete") ?>" name="btnViewDelete">
+            <?php
+        }
+    }
+    if (($actionName == 'add' || $actionName == 'edit')) {
+        if (isset($this->form) && !empty($this->form))
+            echo $this->form->getElement('btnSave');
+    }
+    ?>
+</div>
+<div class="f_right">
+    <?php
+    if ($actionName == 'index')
+    {
+    ?>
+        <input type="button" onclick="$('#searchCountryDiv').slideToggle();" value="<?php echo $translate->_("search") ?>" class="btn btn-block btn-primary button_search font_helvatica" name="cdrtracesearch" id="cdrtracesearch" />
+        <?php echo $this->render($controllerName . "/search.phtml"); ?>
+    <?php
+    }            
+    if ($actionName != 'index' && $actionName != 'list') {
+
+        $logUrl = '/' . $moduleName . '/' . $controllerName . '/log/' . $this->qstr;
+        ?>
+        
+        <input type="button" onClick="getData('', 'back')" value="<?php echo $translate->_("back") ?>" class="btn btn-block btn-primary button_back font_helvatica" name="btnBack" id="btnBack" />
+        <?php
+    }
+    ?>
+</div>

@@ -1,0 +1,47 @@
+<?php
+// Remove Default Zend Form Decorators.
+// $this->removeDecorators($this->loginForm);
+$errmsg = '';
+$translate = Zend_Registry::get("translate");
+if (count($this->errmsg)) {
+    $errmsg = implode("<br>", $this->errmsg);
+}
+?>
+<div class="login-box-body">
+    <p class="login-box-msg"><?php echo "Reset Password"; ?> </p>
+    <div class="login_box">
+        <?php
+        if (!empty($this->msg) && $this->msg != "valid") {
+            ?>
+            <div class="module_name_container">
+                <div class="module_name">
+                    <span class="error_msg"><?php echo $this->msg; ?></span>
+                </div>
+                <div class="module_name">&nbsp;</div>
+                <a class="btn btn-primary btn-block btn-flat" href="<?php echo "http://" . $_SERVER['HTTP_HOST'] ."/misi/login.php"; ?>">Back to Login</a>
+
+            </div>
+            <?php
+        } else {
+            ?>
+            <form id="frmLogin" action="<?php echo INNER_PATH . "/login/login/reset"; ?>" method="post" name="frmLogin" >
+                <div class="form-group has-feedback">
+                    <input type="hidden" class="form-control" name="UserID" id="UserID" value="<?php echo $this->UserID; ?>" >
+                    <input type="password" class="form-control" name="password" id="password" placeholder="New Password" >
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <input type="password" class="form-control" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password" >
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="row">                
+                    <div class="col-xs-12">
+                        <input type="submit" class="btn btn-primary btn-block btn-flat" name="btnSubmit" id="btnSubmit" value ="Reset" >
+                    </div>
+                </div>
+            </form>
+            <?php
+        }
+        ?>
+    </div>
+</div>

@@ -1,0 +1,192 @@
+/* ===== Yellow Style (for demo only) ===== */
+
+
+/* background-color */
+.btn-main, 
+.btn-main:focus, 
+.btn-main.focus, 
+.btn-main:active, 
+.btn-main.active,
+.portfolio .modal-content .lr,
+.portfolio .modal-content .lr .rl,
+.progress-bar,
+.nav-pills > li.active > a, 
+.nav-pills > li.active > a:hover, 
+.nav-pills > li.active > a:focus, 
+.info-box-1.square-icon .info-box-icon,
+.info-box-2.square-icon .info-box-heading .info-box-icon,
+.blog .caption-tag:after,
+.team .modal-content .lr,
+.team .modal-content .lr .rl,
+.prices .price-box-featured .panel-heading,
+.btn-main, .btn-main:focus, 
+.btn-main.focus, 
+.btn-main:active, 
+.btn-main.active,
+.btn-blank:hover,
+.trusted-by,
+.featured-box .get-started .btn
+ {
+	background-color: #FF9C00;
+}
+
+
+/* background-color hover */
+.btn-main:hover, 
+.featured-box .get-started .btn:hover {
+	background-color: #E08A02;
+}
+
+
+/* background-color transparent */
+.cover{
+	background-color: rgba(110, 63, 1, 0.19);
+}
+.counter-up .cover {
+	background-color: rgba(19, 14, 11, 0.60);
+}
+.testimonial .cover {
+	background-color: rgba(19, 14, 11, 0.91);
+}
+#services-section .cover {
+	background-color: rgba(6, 5, 4, 0.91);
+}
+#contact-section .cover {
+	background-color: rgba(6, 5, 4, 0.91);
+}
+#error-section .cover {
+	background-color: rgba(18, 9, 0, 0.91);
+}
+#video-intro-section .cover {
+	background-color: rgba(52, 39, 30, 0.5);
+}
+.tparrows.preview1:hover:after {
+	background-color: rgba(178, 108, 15, 0.19);
+}
+
+
+/* color */
+a, 
+a:hover, 
+a:focus,
+.text-main,
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-nav > .open > a, 
+.navbar-default .navbar-nav > .open > a:hover, 
+.navbar-default .navbar-nav > .open > a:focus,
+.dropdown-menu > li > a:hover, 
+.dropdown-menu > li > a:focus,
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > li > a:hover, 
+.navbar-default .navbar-nav > li > a:focus, 
+.navbar-default .navbar-nav > li.active > a,
+.navbar-inverse .navbar-nav > .active > a, 
+.navbar-inverse .navbar-nav > .active > a:hover, 
+.navbar-inverse .navbar-nav > .active > a:focus,
+.navbar-inverse .navbar-nav > li > a:hover, 
+.navbar-inverse .navbar-nav > li > a:focus, 
+.navbar-inverse .navbar-nav > li.active > a,
+.navbar-inverse .navbar-nav > .open > a, 
+.navbar-inverse .navbar-nav > .open > a:hover, 
+.navbar-inverse .navbar-nav > .open > a:focus,
+body.boxed .body .navbar-default .navbar-nav > li > a:hover, 
+body.boxed .body .navbar-default .navbar-nav > li > a:focus,
+body.boxed .body .navbar-default .navbar-nav > .active > a, 
+body.boxed .body .navbar-default .navbar-nav > .active > a:hover, 
+body.boxed .body .navbar-default .navbar-nav > .active > a:focus,
+body.boxed .body .navbar-inverse .navbar-nav > .active > a, 
+body.boxed .body .navbar-inverse .navbar-nav > .active > a:hover, 
+body.boxed .body .navbar-inverse .navbar-nav > .active > a:focus,
+body.boxed .body .navbar-inverse.navbar-transparent .navbar-nav > .active > a, 
+body.boxed .body .navbar-inverse.navbar-transparent .navbar-nav > .active > a:hover, 
+body.boxed .body .navbar-inverse.navbar-transparent .navbar-nav > .active > a:focus,
+.navbar-default.navbar-fixed-top.navbar-shrink .navbar-brand:hover,
+.navbar-default.navbar-shrink .navbar-nav > li > a:hover, 
+.navbar-default.navbar-shrink .navbar-nav > li > a:focus, 
+.navbar-default.navbar-shrink .navbar-nav > li.active > a,
+.navbar-inverse.navbar-fixed-top.navbar-shrink .navbar-nav > .active > a, 
+.navbar-inverse.navbar-fixed-top.navbar-shrink .navbar-nav > .active > a:hover, 
+.navbar-inverse.navbar-fixed-top.navbar-shrink .navbar-nav > .active > a:focus,
+.navbar-inverse.navbar-fixed-top.navbar-shrink .navbar-nav > li > a:hover, 
+.navbar-inverse.navbar-fixed-top.navbar-shrink .navbar-nav > li > a:focus, 
+.navbar-inverse.navbar-fixed-top.navbar-shrink .navbar-nav > li.active > a,
+.navbar-fixed-top.navbar-shrink .navbar-brand:hover,
+body.boxed .body .navbar-inverse.navbar-fixed-top.navbar-shrink .navbar-nav > .active > a, 
+body.boxed .body .navbar-inverse.navbar-fixed-top.navbar-shrink .navbar-nav > .active > a:hover, 
+body.boxed .body .navbar-inverse.navbar-fixed-top.navbar-shrink .navbar-nav > .active > a:focus,
+.info-box-1 .info-box-info a:hover,
+.info-box-1:hover .info-box-icon,
+.info-box-2 .info-box-icon,
+.scrolltotop,
+#contact-section .social-icons a,
+.blog .thumbnail .caption .title:hover,
+.prices .price-box-featured .price-box-ribbon,
+.btn-blank, 
+.btn-blank:focus, 
+.btn-blank.focus, 
+.btn-blank:active, 
+.btn-blank.active,
+.dropdown-menu > li > a.active,
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+	color: #FF9C00;
+}
+
+
+/* border-color */
+.nav-pills > li.active > a, 
+.nav-pills > li.active > a:hover, 
+.nav-pills > li.active > a:focus, 
+.owl-theme .owl-controls .owl-page.active span, 
+.owl-theme .owl-controls.clickable .owl-page:hover span,
+.scrolltotop,
+.btn-blank, 
+.btn-blank:focus, 
+.btn-blank.focus, 
+.btn-blank:active, 
+.btn-blank.active,
+.btn-blank:hover {
+	border-color: #FF9C00;
+}
+
+
+/* border-top-color */
+.navbar-default .dropdown-menu,
+.navbar-inverse .dropdown-menu,
+.nav-pills > li.active > a:after,
+body.boxed .top-slidingbar-trigger-wrapper,
+.top-slidingbar-trigger-wrapper, 
+.navbar-transparent.navbar-shrink .top-slidingbar-trigger-wrapper {
+	border-top-color: #FF9C00;
+}
+
+
+/* box-shadow */
+.prices .panel-default .panel-heading {
+	-webkit-box-shadow: inset 0 4px #FF9C00;
+	-moz-box-shadow: inset 0 4px #FF9C00;
+	box-shadow: inset 0 4px #FF9C00;
+}
+.prices .price-box-featured .panel-footer {
+	-webkit-box-shadow: inset 0 -4px #FF9C00;
+	-moz-box-shadow: inset 0 -4px #FF9C00;
+	box-shadow: inset 0 -4px #FF9C00;
+}
+.navbar-default.navbar-shrink .navbar-nav > li.active > a {
+	-webkit-box-shadow: inset 0 3px #FF9C00 !important;
+	-moz-box-shadow: inset 0 3px #FF9C00 !important;
+	box-shadow: inset 0 3px #FF9C00 !important;
+}
+
+
+/* Small Devices */
+@media only screen and (max-width : 767px) {
+
+	.navbar-collapse {
+		border-color: #EF950A !important;
+	}
+
+}
